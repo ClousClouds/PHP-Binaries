@@ -135,7 +135,7 @@ if ($PHP_DEBUG_BUILD -eq 0) {
 }
 
 if ($env:PHP_JIT_SUPPORT -eq 1) {
-    $PHP_JIT_ENABLE_ARG="yes"
+    $PHP_JIT_ENABLE_ARG="on"
     pm-echo "Compiling JIT support in OPcache (unstable)"
 }
 
