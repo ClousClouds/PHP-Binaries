@@ -294,6 +294,17 @@ jobs:
           path: ${{ github.workspace }}
           pattern: "*PHP-${{ inputs.php-version-base }}-*-PM${{ inputs.pm-version-major }}"
 
+      - name: Download .gdbinit for this PHP version
+        run: |
+          curl -L https://raw.githubusercontent.com/php/php-src/refs/heads/PHP-${{ inputs.php-version-base }}/.gdbinit -o Z-PHP-${{ inputs.php-version-base }}.gdbinit
+
+      - name: Upload .gdbinit artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: PHP-${[ inputs.php-version-base }}.gdbinit
+          path: |
+            ${{ github.workspace }}/*.gdbinit
+
       - name: Generate release notes
         run: |
           echo "### PHP ${{ inputs.php-version-base }} for PocketMine-MP ${{ inputs.pm-version-major }}.x" > changelog.md
@@ -326,6 +337,7 @@ jobs:
           artifacts: |
             ${{ github.workspace }}/*PHP-*-PM*/*.tar.gz
             ${{ github.workspace }}/*PHP-*-Windows-PM*/*.zip
+            ${{ github.workspace }}/*.gdbinit
           name: PM ${{ inputs.pm-version-major }}.x (${{ steps.date.outputs.DATE }}) - Recommended
           tag: pm${{ inputs.pm-version-major }}-latest
           commit: ${{ github.sha }}
@@ -341,6 +353,7 @@ jobs:
           artifacts: |
             ${{ github.workspace }}/*PHP-*-PM*/*.tar.gz
             ${{ github.workspace }}/*PHP-*-Windows-PM*/*.zip
+            ${{ github.workspace }}/*.gdbinit
           name: PM ${{ inputs.pm-version-major }}.x (${{ steps.date.outputs.DATE }}) - PHP ${{ inputs.php-version-base }}
           tag: pm${{ inputs.pm-version-major }}-php-${{ inputs.php-version-base }}-latest
           commit: ${{ github.sha }}
