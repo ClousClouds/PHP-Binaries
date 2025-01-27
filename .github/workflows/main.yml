@@ -58,6 +58,8 @@ jobs:
           artifacts: |
             ${{ github.workspace }}/*PHP-*-PM*/*.tar.gz
             ${{ github.workspace }}/*PHP-*-Windows-PM*/*.zip
+            ${{ github.workspace }}/*PHP-*.gdbinit/*.gdbinit
+
           name: PHP (Build ${{ github.run_number }}) - Archive
           tag: php-build-${{ github.run_number }}
           commit: ${{ github.sha }}
