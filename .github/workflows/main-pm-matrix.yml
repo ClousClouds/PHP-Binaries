@@ -278,6 +278,9 @@ jobs:
     if: ${{ github.ref_name == 'stable' && github.ref_type == 'branch' && !contains(github.event.head_commit.message, '[no release]') }}
     concurrency: release-${{ inputs.php-version-base }}-pm${{ inputs.pm-version-major }}
 
+    permissions:
+      contents: write
+
     steps:
       - uses: actions/checkout@v4
 
