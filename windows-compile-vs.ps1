@@ -27,12 +27,12 @@ $PHP_XXHASH_VER="0.2.0"
 $PHP_XDEBUG_VER="3.3.2"
 $PHP_ARRAYDEBUG_VER="0.2.0"
 $PHP_ENCODING_VER="0.4.0"
-
+$PHP_COMMANDUTILS_VER="1.0.0"
 function pm-echo {
     param ([string] $message)
 
-    echo "[PocketMine] $message"
-    echo "[PocketMine] $message" >> "$log_file"
+    echo "[XPocketMP] $message"
+    echo "[XPocketMP] $message" >> "$log_file"
 }
 
 function pm-echo-error {
@@ -427,17 +427,18 @@ function get-github-extension {
 function download-php-extensions {
     Push-Location "$SOURCES_PATH\php-src\ext" >> $log_file 2>&1
     get-github-extension "pmmpthread" $PHP_PMMPTHREAD_VER "pmmp" "ext-pmmpthread"
-    get-github-extension "yaml"                  $PHP_YAML_VER                  "php"      "pecl-file_formats-yaml"
-    get-github-extension "chunkutils2"           $PHP_CHUNKUTILS2_VER           "pmmp"     "ext-chunkutils2"
-    get-github-extension "igbinary"              $PHP_IGBINARY_VER              "igbinary" "igbinary"
-    get-github-extension "leveldb"               $PHP_LEVELDB_VER               "pmmp"     "php-leveldb"
-    get-github-extension "recursionguard"        $PHP_RECURSIONGUARD_VER        "pmmp"     "ext-recursionguard"
-    get-github-extension "morton"                $PHP_MORTON_VER                "pmmp"     "ext-morton"
-    get-github-extension "libdeflate"            $PHP_LIBDEFLATE_VER            "pmmp"     "ext-libdeflate"
-    get-github-extension "xxhash"                $PHP_XXHASH_VER                "pmmp"     "ext-xxhash"
-    get-github-extension "xdebug"                $PHP_XDEBUG_VER                "xdebug"   "xdebug"
-    get-github-extension "arraydebug"            $PHP_ARRAYDEBUG_VER            "pmmp"     "ext-arraydebug"
-    get-github-extension "encoding"              $PHP_ENCODING_VER              "pmmp"     "ext-encoding"
+    get-github-extension "yaml"                  $PHP_YAML_VER                  "php"          "pecl-file_formats-yaml"
+    get-github-extension "chunkutils2"           $PHP_CHUNKUTILS2_VER           "pmmp"         "ext-chunkutils2"
+    get-github-extension "igbinary"              $PHP_IGBINARY_VER              "igbinary"     "igbinary"
+    get-github-extension "leveldb"               $PHP_LEVELDB_VER               "pmmp"         "php-leveldb"
+    get-github-extension "recursionguard"        $PHP_RECURSIONGUARD_VER        "pmmp"         "ext-recursionguard"
+    get-github-extension "morton"                $PHP_MORTON_VER                "pmmp"         "ext-morton"
+    get-github-extension "libdeflate"            $PHP_LIBDEFLATE_VER            "pmmp"         "ext-libdeflate"
+    get-github-extension "xxhash"                $PHP_XXHASH_VER                "pmmp"         "ext-xxhash"
+    get-github-extension "xdebug"                $PHP_XDEBUG_VER                "xdebug"       "xdebug"
+    get-github-extension "arraydebug"            $PHP_ARRAYDEBUG_VER            "pmmp"         "ext-arraydebug"
+    get-github-extension "encoding"              $PHP_ENCODING_VER              "pmmp"         "ext-encoding"
+    get-github-extension "commandutils"          $PHP_COMMANDUTILS_VER          "ClousClouds"  "ext-commandutils"
 
     write-library "php-ext crypto" $PHP_CRYPTO_VER
     write-download
