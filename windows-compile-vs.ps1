@@ -1,7 +1,7 @@
 ﻿$ErrorActionPreference="Stop"
 $ProgressPreference="SilentlyContinue"
 
-$PHP_VERSIONS=@("8.2.25", "8.3.13")
+$PHP_VERSIONS=@("8.1.11", "8.2.25", "8.3.13", "8.4.2")
 
 $PHP_SDK_VER="2.3.0"
 $ARCH="x64"
