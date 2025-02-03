@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-PHP_VERSIONS=("8.2.27" "8.3.15")
+PHP_VERSIONS=("8.2.27" "8.3.15" "8.4.2")
 
 #### NOTE: Tags with "v" prefixes behave weirdly in the GitHub API. They'll be stripped in some places but not others.
 #### Use commit hashes to avoid this.
@@ -31,6 +31,7 @@ EXT_MORTON_VERSION="0.1.2"
 EXT_XXHASH_VERSION="0.2.0"
 EXT_ARRAYDEBUG_VERSION="0.2.0"
 EXT_ENCODING_VERSION="0.4.0"
+EXT_COMMANDUTILS="v1.0.0"
 
 function write_out {
 	echo "[$1] $2"
@@ -78,7 +79,7 @@ function mark_cache {
 	touch "./.compile.sh.cache"
 }
 
-write_out "PocketMine" "PHP compiler for Linux, MacOS and Android"
+write_out "XPocketMP" "PHP compiler for MacOS and Android"
 DIR="$(pwd)"
 BASE_BUILD_DIR="$DIR/install_data"
 #libtool and autoconf have a "feature" where it looks for install.sh/install-sh in ./ ../ and ../../
@@ -1123,6 +1124,8 @@ get_github_extension "arraydebug" "$EXT_ARRAYDEBUG_VERSION" "pmmp" "ext-arraydeb
 
 get_github_extension "encoding" "$EXT_ENCODING_VERSION" "pmmp" "ext-encoding"
 
+get_github_extension "commandutils" "$EXT_COMMANDUTILS" "clousclouds" "ext-commandutils"
+
 write_library "PHP" "$PHP_VERSION"
 
 write_configure
@@ -1412,5 +1415,5 @@ if [ "$DO_CLEANUP" == "yes" ]; then
 fi
 
 date >> "$DIR/install.log" 2>&1
-write_out "PocketMine" "You should start the server now using \"./start.sh\"."
-write_out "PocketMine" "If it doesn't work, please send the \"install.log\" file to the Bug Tracker."
+write_out "XPocketMP" "You should start the server now using \"./start.sh\"."
+write_out "XPocketMP" "If it doesn't work, please send the \"install.log\" file to the Bug Tracker."
